@@ -1,0 +1,47 @@
+
+* {
+  border: dashed 1px red;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #708090;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.x-button {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  cursor: pointer;
+  transition: top 0.1s;
+}
+
+.x-button:hover {
+  top: 17px;
+}
+
+.search {
+  position: relative;
+  left: 25px;
+}
