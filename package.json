@@ -8,10 +8,10 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-modal": "^1.7.7",
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.7",
+    "react-tap-event-plugin": "^2.0.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
