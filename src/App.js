@@ -43,7 +43,7 @@ class App extends Component {
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
 
-        this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.YOUTUBE_API });
+        //this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.YOUTUBE_API });
 
     }
 
