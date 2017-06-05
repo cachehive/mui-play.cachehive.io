@@ -102,10 +102,11 @@ class App extends Component {
             <div className="App">
                 <div className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
-                    <h2>Welcome to React</h2>
+                    <h2>Material-UI Playground</h2>
+                    <h4>By: cachehive.com</h4>
                 </div>
                 <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
+                    A test environment to experiment with different React components.
                 </p>
 
                 <div >
