@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -42,10 +43,17 @@ class App extends Component {
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.sendMailAddress = this.sendMailAddress.bind(this);
 
-        //this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.YOUTUBE_API });
-        this.YoutubeClient  = YoutubeFinder.createClient({ key: 'AIzaSyAncE-lCxMRnkVpSbs-v29c3dcG4Qq9iFQ' });
 
+
+        this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.YOUTUBE_API });
+        //this.YoutubeClient  = YoutubeFinder.createClient({ key: 'AIzaSyAncE-lCxMRnkVpSbs-v29c3dcG4Qq9iFQ' });
+
+    }
+
+    componentWillMount() {
+        console.log( 'youtube API Key: ' + process.env.YOUTUBE_API );
     }
 
     onUpdateInput(inputValue) {
@@ -128,15 +136,25 @@ class App extends Component {
         this.setState({modalIsOpen: false});
     }
 
+    sendMailAddress() {
+        console.log( 'TODO: Implement' );
+        //axios.post('/api', { firstName: 'first', lastName: 'last', email: 'first@last.com' })
+        //    .then(function(response){
+        //        console.log('saved successfully')
+        //    });
+    }
+
 
     renderVideos(){
         if (this.state.videoList.length > 0) {
+            console.log( this.state.videoList );
+
             return (
                 this.state.videoList.map( element => {
                     return (
                         <div className="container col-md-8 col-xs-6 col-md-offset-2">
                             <div className="container-fluid col-md-8">
-                                <p>{element.snippet.title}</p>
+                                <p>{element.snippet.toString()}</p>
                             </div>
                             <div className="container-fluid col-md-4">
                                 <div className="text-center"></div>
@@ -145,9 +163,10 @@ class App extends Component {
                     );
                 })
             )
-            console.log( this.state.videoList );
         }
     }
+
+//     <p>{element.snippet.title}</p>
 
     render() {
 
@@ -176,6 +195,7 @@ class App extends Component {
                     </div>
                     <div>
                         <button onClick={this.openModal}>Open Modal</button>
+                        <button onClick={this.sendMailAddress}>Send Address</button>
                     </div>
                 </div>
                 <Modal
