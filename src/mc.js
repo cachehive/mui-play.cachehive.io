@@ -1,9 +1,9 @@
 const axios = require('axios')
 
 exports.sendToMailchimp = function (email) {
-    let mailchimpInstance   = 'us15' /*process.env.MC_DATA_CENTER*/,
-        listUniqueId        = 'c877def6a3' /*process.env.MC_LIST_ID*/,
-        mailchimpApiKey     = '620ce86925df3426ec27d1bc41e856a7-us15' /*process.env.MC_API_KEY*/;
+    var mailchimpInstance   = process.env.MC_DATA_CENTER,
+        listUniqueId        = process.env.MC_LIST_ID,
+        mailchimpApiKey     = process.env.MC_API_KEY;
 
     axios.post('https://' + mailchimpInstance + '.api.mailchimp.com/3.0/lists/' + listUniqueId + '/members/', {
         auth: 'api_key: ' + mailchimpApiKey,
