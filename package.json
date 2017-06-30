@@ -30,10 +30,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm install && npm run build"
+    "heroku-postbuild": "npnpm run build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/buckyinsfo/mui-play.cachehive.io.git"
   }
 }
+
