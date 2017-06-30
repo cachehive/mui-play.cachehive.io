@@ -22,8 +22,8 @@ var apiRouter = function(app) {
     //});
 
     app.post("/api", function(req, res) {
-        sendMailchimp.sendToMailchimp3( req.body.email );
-        console.log( "sent address - " + req.body.email )
+        sendMailchimp.sendToMailchimp3( req.body.email_address );
+        console.log( "sent address - " + req.body.email_address )
         res.send( 'success');
     });
 

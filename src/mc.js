@@ -57,7 +57,7 @@ exports.sendToMailchimp3 = function (email) {
             url: 'https://' + mailchimpInstance + '.api.mailchimp.com/3.0/lists/' + listUniqueId + '/members/',
             headers: {
                 'cache-control': 'no-cache',
-                authorization: 'Basic " + basicAuthKey,
+                authorization: 'Basic ' + basicAuthKey,
                 'content-type': 'application/json'
             },
             body: {email_address: email, status: 'subscribed'},
