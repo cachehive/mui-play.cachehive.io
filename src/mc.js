@@ -51,7 +51,6 @@ exports.sendToMailchimp3 = function (email) {
         mailchimpApiKey     = process.env.MC_API_KEY,
         basicAuthKey        = process.env.MC_BASIC_AUTH;
 
-
     var options = {
             method: 'POST',
             url: 'https://' + mailchimpInstance + '.api.mailchimp.com/3.0/lists/' + listUniqueId + '/members/',

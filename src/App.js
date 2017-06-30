@@ -137,8 +137,8 @@ class App extends Component {
     }
 
     sendMailAddress() {
-        console.log( 'TODO: Implement' );
-        axios.post('/api', { firstName: 'first', lastName: 'last', email: 'first@last.com' })
+        //console.log( 'TODO: Implement' );
+        axios.post('/api', { firstName: 'first', lastName: 'last', email_address: 'first@last.com' })
             .then(function(response){
                 console.log('saved successfully')
             });
