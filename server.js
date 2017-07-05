@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 var compression = require('compression')
 var express = require("express");

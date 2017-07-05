@@ -46,7 +46,6 @@ class App extends Component {
         this.sendMailAddress = this.sendMailAddress.bind(this);
 
 
-
         this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.YOUTUBE_API });
         //this.YoutubeClient  = YoutubeFinder.createClient({ key: 'AIzaSyAncE-lCxMRnkVpSbs-v29c3dcG4Qq9iFQ' });
 
