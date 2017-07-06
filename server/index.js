@@ -40,7 +40,9 @@ var app = express();
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+//    app.use(express.static('client/build'));
+    app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
+
 }
 
 app.use(compression());
