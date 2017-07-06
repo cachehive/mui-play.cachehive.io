@@ -1,40 +1,36 @@
 {
   "name": "mui-play.cachehive.io",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:3001/",
+  "version": "0.0.1",
+  "description": "How to use create-react-app with a custom Node API on Heroku",
+  "engines": {
+    "node": "6.11.x"
+  },
+  "scripts": {
+    "start": "node server",
+    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ],
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "compression": "^1.6.2",
     "dotenv": "^4.0.0",
-    "express": "4.13.3",
-    "jsonp": "^0.2.1",
-    "material-ui": "^0.18.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-modal": "^1.7.7",
-    "react-scripts": "1.0.7",
-    "react-tap-event-plugin": "^2.0.1",
-    "request": "^2.81.0",
-    "youtube-finder": "^1.0.0"
-  },
-  "devDependencies": {
-    "concurrently": "3.1.0",
-    "jasmine": "^2.6.0",
-    "path": "^0.12.7"
-  },
-  "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon server.js",
-    "client": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "express": "^4.14.1",
+    "request": "^2.81.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/buckyinsfo/mui-play.cachehive.io.git"
-  }
+    "url": "https://github.com/cachehive/mui-play.cachehive.io.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "create-react-app",
+    "react"
+  ],
+  "license": "MIT",
+  "devDependencies": {}
 }
