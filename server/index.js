@@ -12,24 +12,16 @@ var sendMailchimp = require('./src/mc');
 
 var apiRouter = function(app) {
 
-    app.get("/", function(req, res) {
-        res.sendFile( 'index.html', {root: './public' } );
-    });
-
-    // Always return the main index.html on routes that should return a "page" (e.g. /contact),
-    // so react-router will render the route in the client
-    //app.get('*/:page', (req, res) => {
-    //    res.sendFile(path.resolve(staticAssets, 'index.html'));
-    //});
-
+    // Answer API requests.
     app.post("/api", function(req, res) {
         sendMailchimp.sendToMailchimp3( req.body.email_address );
         console.log( "sent address - " + req.body.email_address )
-        res.send( 'success');
+        res.send( 'success - added ${req.body.email`address}');
     });
 
-    app.use(function(req, res) {
-        res.status(404).send('Sorry cant find that!');
+    // All remaining requests return the React app, so it can handle routing.
+    app.get('*', function(req, res) {
+        res.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
     });
 }
 
