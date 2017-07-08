@@ -1,10 +1,11 @@
 'use strict';
 require('dotenv').config();
 
-var compression = require('compression')
-var express = require("express");
-var bodyParser = require("body-parser");
-var sendMailchimp = require('./src/mc');
+const compression = require('compression')
+const express = require("express");
+const bodyParser = require("body-parser");
+const sendMailchimp = require('./src/mc');
+const path = require('path');
 
 // ********************************************
 // *  Server Routings
@@ -26,7 +27,7 @@ var apiRouter = function(app) {
 }
 
 // ********************************************
-// *  Server Setup
+// *  Server Settup
 // ********************************************
 var app = express();
 
