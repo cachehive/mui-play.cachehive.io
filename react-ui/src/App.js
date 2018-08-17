@@ -10,6 +10,8 @@ import JSONP from 'jsonp';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import YoutubeFinder        from 'youtube-finder';
 
+import DbPlay from './DbPlay'
+
 
 injectTapEventPlugin();
 
@@ -32,8 +34,8 @@ class App extends Component {
 
         this.state = {
             dataSource: [],
-            inputValue: '',
             videoList: '',
+            inputValue: '',
             modalIsOpen: false
         }
 
@@ -46,13 +48,13 @@ class App extends Component {
         this.sendMailAddress = this.sendMailAddress.bind(this);
 
 
-        this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.YOUTUBE_API });
+        this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.REACT_APP_YOUTUBE_API });
         //this.YoutubeClient  = YoutubeFinder.createClient({ key: 'AIzaSyAncE-lCxMRnkVpSbs-v29c3dcG4Qq9iFQ' });
 
     }
 
     componentWillMount() {
-        console.log( 'youtube API Key: ' + process.env.YOUTUBE_API );
+        console.log( 'youtube API Key: ' + process.env.REACT_APP_YOUTUBE_API );
     }
 
     onUpdateInput(inputValue) {
@@ -189,13 +191,17 @@ class App extends Component {
                             <AutoComplete className="search"
                                           dataSource={this.state.dataSource}
                                           onUpdateInput={this.onUpdateInput}
-                                          onNewRequest={this.onNewRequest} />
+                                          onNewRequest={this.onNewRequest} id="search" />
                         </MuiThemeProvider>
                     </div>
                     <div>
                         <button onClick={this.openModal}>Open Modal</button>
                         <button onClick={this.sendMailAddress}>Send Address</button>
                     </div>
+                </div>
+
+                <div >
+                    <DbPlay />
                 </div>
                 <Modal
                     isOpen={this.state.modalIsOpen}
