@@ -47,9 +47,12 @@ export default class DbPlay extends React.Component {
 
         return (
             <div className="DbPlay"> 
-                <span>DbPlay Stuff - Speed = {this.state.speed}</span>
-                <button onClick={this.addSpeed}>+</button>
-                <button onClick={this.subtractSpeed}>-</button>
+                <h6>DbPlay Stuff</h6>
+                <p>Speed = {this.state.speed}</p>
+                <div>
+                    <button onClick={this.subtractSpeed}>-</button>
+                    <button onClick={this.addSpeed}>+</button>
+                </div>
             </div>
         )
     }

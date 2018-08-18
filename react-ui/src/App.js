@@ -1,27 +1,27 @@
-import axios from 'axios';
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {AutoComplete} from 'material-ui';
-import getMuiTheme        from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider   from 'material-ui/styles/MuiThemeProvider';
+import axios from 'axios'
+import React, {Component} from 'react'
+import logo from './logo.svg'
+import './App.css'
+import {AutoComplete} from 'material-ui'
+import getMuiTheme        from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider   from 'material-ui/styles/MuiThemeProvider'
 
-import JSONP from 'jsonp';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import YoutubeFinder        from 'youtube-finder';
+import JSONP from 'jsonp'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import YoutubeFinder        from 'youtube-finder'
 
 import DbPlay from './DbPlay'
 import ModalPlay from './ModalPlay'
 
 
-injectTapEventPlugin();
+injectTapEventPlugin()
 
-const googleAutoSuggestURL = '//suggestqueries.google.com/complete/search?client=youtube&ds=yt&q=';
+const googleAutoSuggestURL = '//suggestqueries.google.com/complete/search?client=youtube&ds=yt&q='
 
 
 class App extends Component {
     constructor() {
-        super();
+        super()
 
         this.state = {
             dataSource: [],
@@ -30,21 +30,21 @@ class App extends Component {
             modalIsOpen: false
         }
 
-        this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.REACT_APP_YOUTUBE_API });
+        this.YoutubeClient  = YoutubeFinder.createClient({ key: process.env.REACT_APP_YOUTUBE_API })
     }
 
     componentWillMount() {
-        console.log( 'youtube API Key: ' + process.env.REACT_APP_YOUTUBE_API );
+        console.log( 'youtube API Key: ' + process.env.REACT_APP_YOUTUBE_API )
     }
 
-    onUpdateInput(inputValue) {
-        const self = this;
+    onUpdateInput = (inputValue) => {
+        const self = this
 
         this.setState({
             inputValue : inputValue
         },function(){
-            self.performSearch();
-        });
+            self.performSearch()
+        })
     }
 
     onNewRequest = (searchTerm) => {
@@ -56,55 +56,56 @@ class App extends Component {
                 maxResults  : this.props.maxResults <= 50 ? this.props.maxResults : '50'
             }
 
-        this.YoutubeClient.search( params, this.processResults );
+        this.YoutubeClient.search( params, this.processResults )
     }
 
     processResults = ( err, results ) => {
-        if(err) return console.log(err);
-        //this.props.callback(results.items,searchTerm);
+        if(err) 
+            return console.log(err)
+        
         this.setState({
             dataSource : [],
             inputValue : '',
             videoList: results.items
-        });
+        })
     }
 
     performSearch = () => {
         const
             self = this,
-            url  = googleAutoSuggestURL + this.state.inputValue;
+            url  = googleAutoSuggestURL + this.state.inputValue
 
         if(this.state.inputValue !== '') {
             JSONP(url, function(error, data) {
-                let searchResults, retrievedSearchTerms;
+                let searchResults, retrievedSearchTerms
 
-                if(error) return error;
+                if(error) return error
 
-                searchResults = data[1];
+                searchResults = data[1]
 
                 retrievedSearchTerms = searchResults.map(function(result) {
-                    return result[0];
-                });
+                    return result[0]
+                })
 
                 self.setState({
                     dataSource: retrievedSearchTerms
-                });
-            });
+                })
+            })
         }
     }
 
    
     sendMailAddress = () => {
-        //console.log( 'TODO: Implement' );
+        //console.log( 'TODO: Implement' )
         axios.post('/api', { firstName: 'first', lastName: 'last', email_address: 'first@last.com' })
             .then(function(response){
                 console.log('saved successfully')
-            });
+            })
     }
 
     renderVideos = () => {
         if (this.state.videoList.length > 0) {
-            console.log( this.state.videoList );
+            console.log( this.state.videoList )
 
             return (
                 this.state.videoList.map( element => {
@@ -117,7 +118,7 @@ class App extends Component {
                                 <div className="text-center"></div>
                             </div>
                         </div>
-                    );
+                    )
                 })
             )
         }
@@ -143,13 +144,18 @@ class App extends Component {
 
     render() {
 
-        var items = this.renderVideos();
+        var items = this.renderVideos()
 
         return (
             <div className="App">
                 {this.renderHeader()}
                 {this.renderTagline()}
                 <div className="components" >
+                    <div className="comp-container" > 
+                        <h5>Send Email to MailChimp</h5>
+                        <button onClick={this.sendMailAddress}>Send Address</button>
+                    </div>
+                    
                     <div className="comp-container" >
                         <h5>MuiThemeProvider</h5>
                         <MuiThemeProvider muiTheme={getMuiTheme()}>
@@ -162,11 +168,7 @@ class App extends Component {
                         { items }
 
                     </div>
-                    <div className="comp-container" > 
-                        <h5>Send Email to MailChimp</h5>
-                        <button onClick={this.sendMailAddress}>Send Address</button>
-                    </div>
-                
+                    
                     <div className="comp-container" >
                         <h5>Connect to Firebase</h5>
                         
@@ -178,8 +180,8 @@ class App extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default App;
+export default App
