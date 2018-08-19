@@ -94,7 +94,6 @@ class App extends Component {
         }
     }
 
-   
     sendMailAddress = () => {
         //console.log( 'TODO: Implement' )
         axios.post('/api', { firstName: 'first', lastName: 'last', email_address: 'first@last.com' })
