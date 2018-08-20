@@ -14,7 +14,6 @@ const config = {
     messagingSenderId: process.env.REACT_APP_MESSAGE_SENDER_ID,
 }
 
-console.log( config )
 const app = firebase.initializeApp(config)
 const db = firebase.database(app)
  
