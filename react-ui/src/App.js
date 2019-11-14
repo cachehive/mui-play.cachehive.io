@@ -14,7 +14,7 @@ import DbPlay from './DbPlay'
 import ModalPlay from './ModalPlay'
 
 
-injectTapEventPlugin()
+//injectTapEventPlugin()
 
 const googleAutoSuggestURL = '//suggestqueries.google.com/complete/search?client=youtube&ds=yt&q='
 
